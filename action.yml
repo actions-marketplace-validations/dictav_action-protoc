@@ -3,7 +3,6 @@ description: 'protoc action'
 inputs:
   protoc_flags:
     description: 'flags and args of protoc'
-    default: '--help'
     require: false
   make:
     description: 'Makefile Task'
@@ -11,7 +10,7 @@ inputs:
   bash:
     description: 'Bash file'
     require: false
-  working-directory:
+  workdir:
     description: 'Working directory relative to the root directory'
     require: false
 runs:
@@ -19,7 +18,3 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.protoc_flags }}
-  env:
-    WORKING_DIRECTORY: ${{ inputs.working-directory }}
-    MAKE_TASK: ${{ inputs.make }}
-    BASH_FILE: ${{ inputs.bash }}
