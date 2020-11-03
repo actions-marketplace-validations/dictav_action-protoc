@@ -1,5 +1,9 @@
 #!/bin/bash
 
+env
+
+cd "${GITHUB_WORKSPACE}/${WORKING_DIRECTORY}" || exit 1
+
 set -e
 
 if [ -n "$MAKE_TASK" ];
