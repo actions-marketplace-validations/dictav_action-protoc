@@ -1,0 +1,16 @@
+name: test
+on: [pull_request]
+defaults:
+  run:
+    working-directory: testdata
+jobs:
+  protoc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/test
+        with:
+          protoc_flags: '*.proto --descriptor_set_out=out.pb'
+          workdir: testdata
+      - run: test -e out.pb
+
